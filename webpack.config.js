@@ -4,12 +4,13 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 module.exports = {
   entry: [
+      //开发时注释部分保留方便开发
     'webpack-dev-server/client?http://localhost:8080',//资源服务器地址
     'webpack/hot/only-dev-server',
     './index.jsx'
   ],
   output: {
-    filename: 'bundle.js'
+    filename: 'build/bundle.js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
@@ -23,16 +24,17 @@ module.exports = {
   plugins: [
     new webpack.BannerPlugin('This file is created by lidong'),
 //代码压缩
-//    new webpack.optimize.UglifyJsPlugin({
-//      output: {
-//        // remove all comments
-//        comments: false
-//      },
-//      compress: {
-//        warnings: false
-//      }
-//    }),
-    new CommonsChunkPlugin('init.js'),
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        // remove all comments
+        comments: false
+      },
+      compress: {
+        warnings: false
+      }
+    }),
+    new CommonsChunkPlugin('build/init.js'),
+      //开发时注释部分保留，上线时注掉
     new webpack.HotModuleReplacementPlugin(),
     new OpenBrowserPlugin({ url: 'http://localhost:8080' })
   ]

@@ -20,38 +20,47 @@ export default class SearchBar extends React.Component{
       alert('请输入号码');
       return
     }
-    $.get(
-      "./tsconfig.json",
-      {
-        tel:ListStore.setMobile(this.state.tel)
-      },
-      function(result) {
+    ListStore.setMobile(this.state.tel);
+    $.ajax({
+      url: "/user/list",
+      dataType: 'json',
+      type: 'POST',
+      data: {_mobile:this.state.tel},
+      success: function(result) {
         if (result.code==200){
           this.props.handleData(result.tableData)
         }else {
           alert('加载失败')
         }
-      }.bind(this));
+      }.bind(this),
+      error: function() {
+        alert('加载失败')
+      }.bind(this)
+    });
   }
   empty(){
     this.props.emptyAll();
   }
   submit(){
     this.props.emptyTable();
-    $.get(
-        "./tsconfig.json",
-        {
-          tel:ListStore.getMobile()
-        },
-        function(result) {
-          if (result.code==200){
-            this.props.emptyMobile();
-            this.props.handleData(result.tableData);
-          }else {
-            alert('加载失败')
-          }
-        }.bind(this)
-    );
+    let mobile=Array.from(ListStore.getMobile());
+    $.ajax({
+      url: "/user/changeStatus",
+      dataType: 'json',
+      type: 'POST',
+      data: {_mobile:mobile.join(',')},
+      success: function(result) {
+        if (result.code==200){
+          this.props.emptyMobile();
+          this.props.handleData(result.tableData);
+        }else {
+          alert('加载失败')
+        }
+      }.bind(this),
+      error: function() {
+        alert('加载失败')
+      }.bind(this)
+    });
   }
   render(){
     return<div className={SearchStyle.row}>
