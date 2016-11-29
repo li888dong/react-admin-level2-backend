@@ -1,0 +1,8 @@
+{
+  "code":200,
+  "tableData":
+  [{"userId":"a001","userName":"a002","userProperty":"a003","startDate":"a004","endDate":"a005","productName":"a001","contacts":"a002","contactAddress":"a003","phoneNumber":"a004","email":"a005","serverState":"a001","userType":"a10"},
+  {"userId":"b001","userName":"a002","userProperty":"userType","startDate":"a004","endDate":"a005","productName":"a001","contacts":"a002","contactAddress":"a003","phoneNumber":"a004","email":"a005","serverState":"a001","userType":"a90"},
+  {"userId":"c001","userName":"a002","userProperty":"userType","startDate":"a004","endDate":"a005","productName":"a001","contacts":"a002","contactAddress":"a003","phoneNumber":"a004","email":"a005","serverState":"a001","userType":"a00"},
+  {"userId":"d001","userName":"a002","userProperty":"userType","startDate":"a004","endDate":"a005","productName":"a001","contacts":"a002","contactAddress":"a003","phoneNumber":"a004","email":"a005","serverState":"a001","userType":"a600"},{"userId":"d001","userName":"a002","userProperty":"userType","startDate":"a004","endDate":"a005","productName":"a001","contacts":"a002","contactAddress":"a003","phoneNumber":"a004","email":"a005","serverState":"a001","userType":"a800"}]
+}

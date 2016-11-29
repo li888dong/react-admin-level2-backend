@@ -1,0 +1,42 @@
+.mr_100{
+    margin-right: 100px;
+}
+.fl{
+    float: right;
+    composes:mr_100
+}
+
+.col{
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.table{
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 12px;
+    border-spacing: 0;
+    display: table;
+    margin-top: 20px;
+    composes: fl;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+th{
+    padding: 8px 14px 8px 14px;
+    line-height: 1.428571429;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    display: table-cell;
+    text-align: center;
+}
+td{
+    padding: 8px;
+    line-height: 1.428571429;
+    border: 1px solid #ddd;
+    display: table-cell;
+}
