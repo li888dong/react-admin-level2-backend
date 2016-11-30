@@ -14,12 +14,6 @@ var SearchActions = {
     });
 
   },
-  emptyMobile: function () {
-    AppDispatcher.dispatch({
-      actionType: 'EMPTY_MOBILE'
-    });
-
-  },
   emptyAll: function () {
     AppDispatcher.dispatch({
       actionType: 'EMPTY_ALL'

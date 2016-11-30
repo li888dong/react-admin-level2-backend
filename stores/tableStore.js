@@ -1,9 +1,8 @@
 var EventEmitter = require('events').EventEmitter;
 var assign = require('object-assign');
 
-var ListStore = assign({}, EventEmitter.prototype, {
+var TableStore = assign({}, EventEmitter.prototype, {
   tableData: [],
-  mobile:new Set(),
   getTableData:function(){
     return this.tableData
   },
@@ -12,15 +11,7 @@ var ListStore = assign({}, EventEmitter.prototype, {
     this.tableData.push(val)
     )
   },
-  getMobile:function(){
-    return this.mobile
-  },
-  setMobile:function(data){
-    return this.mobile.add(data)
-  },
-  emptyMobile(){
-    return this.mobile=new Set()
-  },
+
   emptyTable:function(){
     return this.tableData=[]
   },
@@ -37,4 +28,4 @@ var ListStore = assign({}, EventEmitter.prototype, {
   }
 });
 
-module.exports = ListStore;
+module.exports = TableStore;

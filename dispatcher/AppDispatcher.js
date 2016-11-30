@@ -1,25 +1,21 @@
 import {Dispatcher} from 'flux'
 var AppDispatcher = new Dispatcher();
-import ListStore from '../stores/tableStore';
+import TableStore from '../stores/tableStore';
 
 AppDispatcher.register(function (action) {
   switch(action.actionType) {
     case 'SET_DATA':
-      ListStore.setTableData(action.actionData);
-      ListStore.emitChange();
+      TableStore.setTableData(action.actionData);
+      TableStore.emitChange();
       break;
     case 'EMPTY_TABLE':
-      ListStore.emptyTable();
-      ListStore.emitChange();
+      TableStore.emptyTable();
+      TableStore.emitChange();
       break;
-    case 'EMPTY_MOBILE':
-      ListStore.emptyMobile();
-      ListStore.emitChange();
-      break;
+
     case 'EMPTY_ALL':
-      ListStore.emptyMobile();
-      ListStore.emptyTable();
-      ListStore.emitChange();
+      TableStore.emptyTable();
+      TableStore.emitChange();
       break;
     default:
       // no op

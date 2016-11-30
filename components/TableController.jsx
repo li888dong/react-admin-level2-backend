@@ -2,26 +2,26 @@
  * Created by lidong on 2016/11/28.
  */
 import React,{Component} from 'react';
-import ListStore from '../stores/tableStore'
+import TableStore from '../stores/tableStore'
 import TableStyle from './Table.css'
 export default class MyTable extends Component {
     constructor(props){
         super(props);
         this.state={
-            tableData: ListStore.getTableData()
+            tableData: TableStore.getTableData()
         }
     }
     componentDidMount() {
-        ListStore.addChangeListener(this._onChange.bind(this));
+        TableStore.addChangeListener(this._onChange.bind(this));
     }
 
     componentWillUnmount() {
-        ListStore.removeChangeListener(this._onChange.bind(this));
+        TableStore.removeChangeListener(this._onChange.bind(this));
     }
 
     _onChange() {
         this.setState({
-            tableData: ListStore.getTableData()
+            tableData: TableStore.getTableData()
         });
     }
     render()
@@ -38,7 +38,7 @@ export default class MyTable extends Component {
                     <thead>
                     <tr>
                         <th>用户ID</th>
-                        <th> 用户名称</th>
+                        <th>用户名称</th>
                         <th>用户性质</th>
                         <th>用户类型</th>
                         <th>起始日期</th>
@@ -48,6 +48,7 @@ export default class MyTable extends Component {
                         <th>联系地址</th>
                         <th>联系电话</th>
                         <th>电子邮箱</th>
+                        <th>用户来源</th>
                         <th>服务状态</th>
                     </tr>
                     </thead>
@@ -55,21 +56,26 @@ export default class MyTable extends Component {
                     {
                         info.map((val,i)=>
                             <tr key={i}>
-                                <td>{val.userId}</td>
-                                <td>{val.userType}</td>
-                                <td>{val.userProperty}</td>
+                                <td>{val.id}</td>
+                                <td>{val.userName}</td>
+                                <td>{val.userNature}</td>
                                 <td>{val.userType}</td>
                                 <td>{val.startDate}</td>
                                 <td>{val.endDate}</td>
                                 <td>{val.productName}</td>
                                 <td>{val.contacts}</td>
                                 <td>{val.contactAddress}</td>
-                                <td>{val.phoneNumber}</td>
+                                <td>{val.mobile}</td>
                                 <td>{val.email}</td>
-                                <td>{val.serverState}</td>
+                                <td>{val.infoUserType}</td>
+                                <td>
+                                    <select name="serverStatus" id="serverStatus">
+                                        <option value="disable">失效</option>
+                                        <option value="">{val.serverStatus}</option>
+                                    </select>
+                                </td>
                             </tr>
                         )
-
                     }
                     </tbody>
                 </table>

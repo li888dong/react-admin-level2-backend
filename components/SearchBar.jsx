@@ -1,13 +1,14 @@
 import React from 'react'
 import $ from 'jquery'
 import SearchStyle from './SearchBar.css'
-import ListStore from '../stores/tableStore';
+import TableStore from '../stores/tableStore';
 
 export default class SearchBar extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      tel:""
+      tel:"",
+      orderId:""
     };
   }
   changeInput(e){
@@ -15,12 +16,11 @@ export default class SearchBar extends React.Component{
       tel: e.target.value
     })
   }
-  addUser(){
+  search(){
     if (this.state.tel==""){
       alert('请输入号码');
       return
     }
-    ListStore.setMobile(this.state.tel);
     $.ajax({
       url: "/user/list",
       dataType: 'json',
@@ -28,9 +28,12 @@ export default class SearchBar extends React.Component{
       data: {_mobile:this.state.tel},
       success: function(result) {
         if (result.code==200){
-          this.props.handleData(result.tableData)
+          this.setState({
+            orderId:result.info[0].orderId
+          });
+          this.props.handleData(result.info)
         }else {
-          alert('加载失败')
+          alert(result.message)
         }
       }.bind(this),
       error: function() {
@@ -39,20 +42,22 @@ export default class SearchBar extends React.Component{
     });
   }
   empty(){
+    this.setState({
+      tel:"",
+      orderId:""
+    });
     this.props.emptyAll();
   }
   submit(){
     this.props.emptyTable();
-    let mobile=Array.from(ListStore.getMobile());
     $.ajax({
       url: "/user/changeStatus",
       dataType: 'json',
       type: 'POST',
-      data: {_mobile:mobile.join(',')},
+      data: {orderId:this.state.orderId},
       success: function(result) {
         if (result.code==200){
-          this.props.emptyMobile();
-          this.props.handleData(result.tableData);
+          this.props.handleData(result.info);
         }else {
           alert('加载失败')
         }
@@ -66,7 +71,7 @@ export default class SearchBar extends React.Component{
     return<div className={SearchStyle.row}>
       <span className={SearchStyle.mt_5}>输入手机号添加要修改的用户：</span>
       <input type="tel" onChange={this.changeInput.bind(this)} value={this.state.tel} className={SearchStyle.input}/>
-      <button onClick={this.addUser.bind(this)} className={SearchStyle.searchBtn}>点击添加</button>
+      <button onClick={this.search.bind(this)} className={SearchStyle.searchBtn}>点击查询</button>
       <button onClick={this.empty.bind(this)} className={SearchStyle.searchBtn}>清空</button>
       <button onClick={this.submit.bind(this)} className={SearchStyle.confirmBtn}>确认更改</button>
     </div>
