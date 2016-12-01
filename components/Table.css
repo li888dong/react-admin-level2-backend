@@ -3,7 +3,6 @@
 }
 .fl{
     float: right;
-    composes:mr_100
 }
 
 .col{
@@ -11,6 +10,8 @@
     flex-flow: column;
     justify-content: space-between;
     align-items: flex-end;
+    border-bottom:2px solid #000;
+    padding-bottom: 50px;
 }
 .table{
     border: 1px solid #ddd;

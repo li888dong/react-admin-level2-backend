@@ -4,11 +4,12 @@
 import React,{Component} from 'react';
 import TableStore from '../stores/tableStore'
 import TableStyle from './Table.css'
-export default class MyTable extends Component {
+import AddNewUser from './addNewUser/addNewUser.jsx'
+export default class AddNewUserTable extends Component {
     constructor(props){
         super(props);
         this.state={
-            tableData: TableStore.getTableData()
+            addUserTableData: TableStore.getAddUserTableData()
         }
     }
     componentDidMount() {
@@ -21,19 +22,16 @@ export default class MyTable extends Component {
 
     _onChange() {
         this.setState({
-            tableData: TableStore.getTableData()
+            addUserTableData: TableStore.getAddUserTableData()
         });
     }
     render()
     {
-        let info=this.state.tableData;
+        let info=this.state.addUserTableData;
         return (
             info?
             <div className={TableStyle.col}>
-                <h2 className={TableStyle.fl}>
-                    管理表格
-                    <small>点击上方确认按钮更改用户状态</small>
-                </h2>
+                <AddNewUser/>
                 <table className={TableStyle.table}>
                     <thead>
                     <tr>

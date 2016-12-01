@@ -1,21 +1,18 @@
+.mt_50{
+    margin-top: 50px;
+}
 
-.mt_200{
-    margin-top: 200px;
-}
-.mt_5{
-    margin-top: 5px;
-}
 .input{
-    height: 25px;
+    height: 15px;
 }
 .row{
-    width: 600px;
+    width: 1000px;
     padding: 5px;
     margin-left: 400px;
     display: flex;
     flex-flow: row;
     justify-content: space-around;
-    composes:mt_200;
+    composes:mt_50;
 }
 .searchBtn{
     color: white;

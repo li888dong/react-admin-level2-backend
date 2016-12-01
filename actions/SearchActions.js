@@ -2,7 +2,7 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 
 var SearchActions = {
 
-  setTableData: function (data) {
+  setAddUserTableData: function (data) {
     AppDispatcher.dispatch({
       actionType: 'SET_DATA',
       actionData: data

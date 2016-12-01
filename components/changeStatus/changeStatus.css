@@ -1,0 +1,46 @@
+.mt_50{
+    margin-top: 50px;
+}
+.mt_5{
+    margin-top: 5px;
+}
+.input{
+    height: 20px;
+}
+.row{
+    width: 700px;
+    padding: 5px;
+    margin-left: 400px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-around;
+    composes:mt_50;
+}
+.searchBtn{
+    color: white;
+    text-shadow: none;
+    background-color: #35aa47;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+}
+.confirmBtn{
+    color: white;
+    text-shadow: none;
+    background-color: #4b8df8;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+}
