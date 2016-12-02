@@ -35,6 +35,11 @@ export default class StopServerTable extends Component {
             info?
                 <div className={TableStyle.col}>
                     <StopServer/>
+                    <textarea
+                        cols="30" rows="10"
+                        placeholder="请输入备注"
+                        onChange={this.setComment.bind(this)}
+                    />
                     <table className={TableStyle.table}>
                         <thead>
                         <tr>
@@ -80,11 +85,7 @@ export default class StopServerTable extends Component {
                         }
                         </tbody>
                     </table>
-                    <textarea
-                        cols="30" rows="10"
-                        placeholder="请输入备注"
-                        onChange={this.setComment.bind(this)}
-                    />
+
                 </div>
                 :<div className={TableStyle.fl}>暂无数据</div>
         );

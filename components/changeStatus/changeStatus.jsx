@@ -78,10 +78,10 @@ export default class ChangeStatus extends React.Component{
     }
     render() {
         return <div className={style.row}>
-            <span className={style.mt_5}>手机号码：</span>
-            <input type="tel" onChange={this.changeInput.bind(this)} value={this.state.tel} className={style.input}/>
-            <span className={style.mt_5}>客户号：</span>
-            <input type="tel" onChange={this.changeInput.bind(this)} value={this.state.tel} className={style.input} disabled/>
+            <label className={style.mt_5}>手机号码：
+            <input type="tel" onChange={this.changeInput.bind(this)} value={this.state.tel} className={style.input}/></label>
+            <label className={style.mt_5}>客户号：
+            <input type="tel" onChange={this.changeInput.bind(this)} value={this.state.tel} className={style.input} disabled/></label>
             <button onClick={this.search.bind(this)} className={style.searchBtn}>点击查询</button>
             <button onClick={this.submit.bind(this)} className={style.confirmBtn}>确认更改</button>
 

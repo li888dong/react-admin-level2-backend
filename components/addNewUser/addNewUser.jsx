@@ -36,6 +36,7 @@ export default class AddNewUser extends React.Component{
             alert('请输入号码');
             return
         }
+
         $.ajax({
             url: "./tsconfig.json",
             dataType: 'json',
@@ -62,24 +63,27 @@ export default class AddNewUser extends React.Component{
     }
     render() {
         return <div className={style.row}>
-            <span className={style.mt_5}>手机号码：</span>
-            <input type="tel" onChange={this.inputMobile.bind(this)} className={style.input}/>
-            <span className={style.mt_5}>客户号：</span>
-            <input type="tel" className={style.input} disabled/>
-            <span className={style.mt_5}>用户类型：</span>
-            <select name="" id="" className={style.input} onChange={this.selectUserNature.bind(this)}>
+            <label className={style.mt_5} htmlFor="mobile">手机号码：
+            <input type="tel" id="mobile" onChange={this.inputMobile.bind(this)} className={style.mr_10}/></label>
+            <label className={style.mt_5}>客户号：
+            <input type="tel" className={style.mr_10} disabled/>
+            </label>
+            <label className={style.mt_5}>用户类型：
+            <select name="" id="" className={style.mr_10} onChange={this.selectUserNature.bind(this)}>
                 <option value="">选择用户类型</option>
                 <option value="3">监管</option>
                 <option value="4">内部免费</option>
             </select>
-            <span className={style.mt_5}>产品期限：</span>
-            <input type="text" list="date" className={style.input} onChange={this.inputLimit.bind(this)}/>
+            </label>
+            <label className={style.mt_5}>产品期限：
+            <input type="text" list="date" className={style.mr_10} onChange={this.inputLimit.bind(this)}/>
             <datalist id="date">
                 <option value="1">1月</option>
                 <option value="6">6月</option>
                 <option value="12">12月</option>
                 <option value="max">永久</option>
             </datalist>
+            </label>
             <button onClick={this.addUser.bind(this)} className={style.searchBtn}>点击添加</button>
         </div>
     }

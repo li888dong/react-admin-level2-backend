@@ -17,20 +17,20 @@ var TableStore = assign({}, EventEmitter.prototype, {
     return this.addUserTableData
   },
   setAddUserTableData:function(data){
-    this.addUserTableData.push(data)
+    this.addUserTableData[0]=data
 
   },
   getChangeStatusTableData:function(){
     return this.changeStatusTableData
   },
   setChangeStatusTableData:function(data){
-        this.changeStatusTableData.push(data)
+        this.changeStatusTableData[0]=data
   },
   getStopServerTableData:function(){
     return this.stopServerTableData
   },
   setStopServerTableData:function(data){
-    this.stopServerTableData.push(data)
+    this.stopServerTableData[0]=data
   },
   setComment:function(data){
     this.comment=data

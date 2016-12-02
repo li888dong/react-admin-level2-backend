@@ -76,10 +76,10 @@ export default class StopServer extends React.Component{
     }
     render() {
         return <div className={style.row}>
-            <span className={style.mt_5}>手机号码：</span>
-            <input type="tel" onChange={this.changeInput.bind(this)}  className={style.input}/>
-            <span className={style.mt_5}>客户号：</span>
-            <input type="tel" onChange={this.changeInput.bind(this)}  className={style.input}/>
+            <label className={style.mt_5}>手机号码：
+            <input type="tel" onChange={this.changeInput.bind(this)}  className={style.input}/></label>
+            <label className={style.mt_5}>客户号：
+            <input type="tel" onChange={this.changeInput.bind(this)}  className={style.input}/></label>
             <button onClick={this.search.bind(this)} className={style.searchBtn}>点击查询</button>
             <button onClick={this.submit.bind(this)} className={style.confirmBtn}>确认终止</button>
         </div>

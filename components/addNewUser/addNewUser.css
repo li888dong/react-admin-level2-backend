@@ -2,19 +2,18 @@
     margin-top: 50px;
 }
 
-.input{
-    height: 15px;
+.mr_10{
+    margin-right: 10px;
 }
 .row{
-    width: 1000px;
     padding: 5px;
-    margin-left: 400px;
     display: flex;
     flex-flow: row;
     justify-content: space-around;
     composes:mt_50;
 }
 .searchBtn{
+    margin-right: 10px;
     color: white;
     text-shadow: none;
     background-color: #35aa47;
