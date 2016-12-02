@@ -25,6 +25,9 @@ export default class StopServerTable extends Component {
             addUserTableData: TableStore.getStopServerTableData()
         });
     }
+    setComment(e){
+        TableStore.setComment(e.target.value)
+    }
     render()
     {
         let info=this.state.addUserTableData;
@@ -69,7 +72,7 @@ export default class StopServerTable extends Component {
                                     <td>
                                         <select name="serverStatus" id="serverStatus">
                                             <option value="disable">失效</option>
-                                            <option value="">{val.serverStatus}</option>
+                                            <option value="able">有效</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -77,6 +80,11 @@ export default class StopServerTable extends Component {
                         }
                         </tbody>
                     </table>
+                    <textarea
+                        cols="30" rows="10"
+                        placeholder="请输入备注"
+                        onChange={this.setComment.bind(this)}
+                    />
                 </div>
                 :<div className={TableStyle.fl}>暂无数据</div>
         );

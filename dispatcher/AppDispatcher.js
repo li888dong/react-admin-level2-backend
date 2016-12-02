@@ -4,8 +4,16 @@ import TableStore from '../stores/tableStore';
 
 AppDispatcher.register(function (action) {
   switch(action.actionType) {
-    case 'SET_DATA':
+    case 'ADD_NEW_USER':
       TableStore.setAddUserTableData(action.actionData);
+      TableStore.emitChange();
+      break;
+    case 'CHANGE_STATUS':
+      TableStore.setChangeStatusTableData(action.actionData);
+      TableStore.emitChange();
+      break;
+    case 'STOP_SERVER':
+      TableStore.setStopServerTableData(action.actionData);
       TableStore.emitChange();
       break;
     case 'EMPTY_TABLE':

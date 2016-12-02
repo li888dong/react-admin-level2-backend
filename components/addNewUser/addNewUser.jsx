@@ -37,9 +37,9 @@ export default class AddNewUser extends React.Component{
             return
         }
         $.ajax({
-            url: "/user/list",
+            url: "./tsconfig.json",
             dataType: 'json',
-            type: 'POST',
+            type: 'get',
             data: {
                 mobile:this.state.tel,
                 userNature:this.state.userNature,
@@ -48,9 +48,9 @@ export default class AddNewUser extends React.Component{
             success: function(result) {
                 if (result.code==200){
                     this.setState({
-                        orderId:result.info[0].orderId
+                        orderId:result.addUserTableData.orderId
                     });
-                    this.handleData(result.info)
+                    this.handleData(result.addUserTableData)
                 }else {
                     alert(result.message)
                 }
@@ -68,7 +68,7 @@ export default class AddNewUser extends React.Component{
             <input type="tel" className={style.input} disabled/>
             <span className={style.mt_5}>用户类型：</span>
             <select name="" id="" className={style.input} onChange={this.selectUserNature.bind(this)}>
-                <option value="">选择产品期限</option>
+                <option value="">选择用户类型</option>
                 <option value="3">监管</option>
                 <option value="4">内部免费</option>
             </select>

@@ -12,6 +12,7 @@ export default class StopServer extends React.Component{
             orderId:""
         }
     }
+
     handleData(result){
         SearchActions.setStopServerTableData(result);
     }
@@ -26,18 +27,18 @@ export default class StopServer extends React.Component{
             return
         }
         $.ajax({
-            url: "/user/list",
+            url: "./tsconfig.json",
             dataType: 'json',
-            type: 'POST',
+            type: 'get',
             data: {
                 mobile:this.state.tel
             },
             success: function(result) {
                 if (result.code==200){
                     this.setState({
-                        orderId:result.info[0].orderId
+                        orderId:result.addUserTableData.orderId
                     });
-                    this.handleData(result.info)
+                    this.handleData(result.addUserTableData)
                 }else {
                     alert(result.message)
                 }
@@ -48,16 +49,22 @@ export default class StopServer extends React.Component{
         });
     }
     submit(){
+        let comment=TableStore.getComment();
+        if (!comment){
+            alert("请输入备注信息");
+            return
+        }
         $.ajax({
-            url: "/user/changeStatus",
+            url: "./tsconfig.json",
             dataType: 'json',
-            type: 'POST',
+            type: 'geT',
             data: {
-                orderId:this.state.orderId
+                orderId:this.state.orderId,
+                comment:comment
             },
             success: function(result) {
                 if (result.code==200){
-                    this.handleData(result.info);
+                    this.handleData(result.addUserTableData);
                 }else {
                     alert('加载失败')
                 }

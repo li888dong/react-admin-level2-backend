@@ -6,6 +6,7 @@ var TableStore = assign({}, EventEmitter.prototype, {
   changeStatusTableData:[],
   stopServerTableData:[],
   nature:"1",
+  comment:"",
   getNature:function(){
     return this.nature
   },
@@ -16,27 +17,27 @@ var TableStore = assign({}, EventEmitter.prototype, {
     return this.addUserTableData
   },
   setAddUserTableData:function(data){
-    data.map((val)=>
-    this.addUserTableData.push(val)
-    )
+    this.addUserTableData.push(data)
+
   },
   getChangeStatusTableData:function(){
     return this.changeStatusTableData
   },
   setChangeStatusTableData:function(data){
-    data.map((val)=>
-        this.changeStatusTableData.push(val)
-    )
+        this.changeStatusTableData.push(data)
   },
   getStopServerTableData:function(){
     return this.stopServerTableData
   },
   setStopServerTableData:function(data){
-    data.map((val)=>
-        this.stopServerTableData.push(val)
-    )
+    this.stopServerTableData.push(data)
   },
-
+  setComment:function(data){
+    this.comment=data
+  },
+  getComment:function(){
+    return this.comment
+  },
   emptyTable:function(){
     return this.addUserTableData=[]
   },

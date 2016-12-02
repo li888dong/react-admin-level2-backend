@@ -66,12 +66,7 @@ export default class AddNewUserTable extends Component {
                                 <td>{val.mobile}</td>
                                 <td>{val.email}</td>
                                 <td>{val.infoUserType}</td>
-                                <td>
-                                    <select name="serverStatus" id="serverStatus">
-                                        <option value="disable">失效</option>
-                                        <option value="">{val.serverStatus}</option>
-                                    </select>
-                                </td>
+                                <td>{val.serverStatus}</td>
                             </tr>
                         )
                     }

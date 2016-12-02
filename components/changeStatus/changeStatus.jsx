@@ -33,18 +33,18 @@ export default class ChangeStatus extends React.Component{
             return
         }
         $.ajax({
-            url: "/user/list",
+            url: "./tsconfig.json",
             dataType: 'json',
-            type: 'POST',
+            type: 'get',
             data: {
                 mobile:this.state.tel
             },
             success: function(result) {
                 if (result.code==200){
                     this.setState({
-                        orderId:result.info[0].orderId
+                        orderId:result.addUserTableData.orderId
                     });
-                    this.handleData(result.info)
+                    this.handleData(result.addUserTableData)
                 }else {
                     alert(result.message)
                 }
@@ -57,22 +57,22 @@ export default class ChangeStatus extends React.Component{
     submit(){
         this.emptyTable();
         $.ajax({
-            url: "/user/changeStatus",
+            url: "./tsconfig.json",
             dataType: 'json',
-            type: 'POST',
+            type: 'get',
             data: {
                 orderId:this.state.orderId,
                 nature:TableStore.getNature()
             },
             success: function(result) {
                 if (result.code==200){
-                    this.handleData(result.info);
+                    this.handleData(result.addUserTableData);
                 }else {
                     alert('加载失败')
                 }
             }.bind(this),
             error: function() {
-                alert('加载失败')
+                alert('加载失败1')
             }.bind(this)
         });
     }
