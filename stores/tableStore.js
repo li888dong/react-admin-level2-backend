@@ -7,6 +7,7 @@ var TableStore = assign({}, EventEmitter.prototype, {
   stopServerTableData:[],
   nature:"1",
   comment:"",
+  disable:"ABLE",
   getNature:function(){
     return this.nature
   },
@@ -37,6 +38,12 @@ var TableStore = assign({}, EventEmitter.prototype, {
   },
   getComment:function(){
     return this.comment
+  },
+  setDisable:function(data){
+    this.disable=data
+  },
+  getDisable:function(){
+    return this.disable
   },
   emptyTable:function(){
     return this.addUserTableData=[]

@@ -9,7 +9,8 @@ export default class StopServer extends React.Component{
         this.state={
             stopServerTableData: TableStore.getStopServerTableData(),
             tel:"",
-            orderId:""
+            orderId:"",
+            disable:""
         }
     }
 
@@ -27,18 +28,18 @@ export default class StopServer extends React.Component{
             return
         }
         $.ajax({
-            url: "./tsconfig.json",
+            url: "/user/find",
             dataType: 'json',
-            type: 'get',
+            type: 'post',
             data: {
                 mobile:this.state.tel
             },
             success: function(result) {
                 if (result.code==200){
                     this.setState({
-                        orderId:result.addUserTableData.orderId
+                        orderId:result.info.orderId
                     });
-                    this.handleData(result.addUserTableData)
+                    this.handleData(result.info)
                 }else {
                     alert(result.message)
                 }
@@ -55,12 +56,13 @@ export default class StopServer extends React.Component{
             return
         }
         $.ajax({
-            url: "./tsconfig.json",
+            url: "/order/updateStatus",
             dataType: 'json',
-            type: 'geT',
+            type: 'post',
             data: {
                 orderId:this.state.orderId,
-                comment:comment
+                context:comment,
+                disabled:TableStore.getDisable()
             },
             success: function(result) {
                 if (result.code==200){

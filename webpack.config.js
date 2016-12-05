@@ -5,8 +5,8 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 module.exports = {
   entry: [
       //开发时注释部分保留方便开发
-    'webpack-dev-server/client?http://localhost:8080',//资源服务器地址
-    'webpack/hot/only-dev-server',
+    //'webpack-dev-server/client?http://localhost:8080',//资源服务器地址
+    //'webpack/hot/only-dev-server',
     './index.jsx'
   ],
   output: {
@@ -35,7 +35,7 @@ module.exports = {
 //    }),
     new CommonsChunkPlugin('build/init.js'),
       //开发时注释部分保留，上线时注掉
-    new webpack.HotModuleReplacementPlugin(),
-    new OpenBrowserPlugin({ url: 'http://localhost:8080' })
+    //new webpack.HotModuleReplacementPlugin(),
+    //new OpenBrowserPlugin({ url: 'http://localhost:8080' })
   ]
 };

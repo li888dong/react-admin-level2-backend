@@ -21,6 +21,11 @@ export default class AddNewUser extends React.Component{
             tel: e.target.value
         })
     }
+    inputClient(e){
+        this.setState({
+            orderId: e.target.value
+        })
+    }
     selectUserNature(e){
         this.setState({
             userNature: e.target.value
@@ -38,20 +43,19 @@ export default class AddNewUser extends React.Component{
         }
 
         $.ajax({
-            url: "./tsconfig.json",
+            url: "/user/add",
             dataType: 'json',
-            type: 'get',
+            type: 'post',
             data: {
                 mobile:this.state.tel,
-                userNature:this.state.userNature,
-                productTimeLimit:this.state.productTimeLimit
+                client:this.state.orderId,
+                _userProperty:this.state.userNature,
+                duration:this.state.productTimeLimit
             },
             success: function(result) {
                 if (result.code==200){
-                    this.setState({
-                        orderId:result.addUserTableData.orderId
-                    });
-                    this.handleData(result.addUserTableData)
+                    this.handleData(result.info);
+                    alert(result.message)
                 }else {
                     alert(result.message)
                 }
@@ -66,7 +70,7 @@ export default class AddNewUser extends React.Component{
             <label className={style.mt_5} htmlFor="mobile">手机号码：
             <input type="tel" id="mobile" onChange={this.inputMobile.bind(this)} className={style.mr_10}/></label>
             <label className={style.mt_5}>客户号：
-            <input type="tel" className={style.mr_10} disabled/>
+            <input type="number" className={style.mr_10} onChange={this.inputClient.bind(this)}/>
             </label>
             <label className={style.mt_5}>用户类型：
             <select name="" id="" className={style.mr_10} onChange={this.selectUserNature.bind(this)}>
@@ -81,7 +85,7 @@ export default class AddNewUser extends React.Component{
                 <option value="1">1月</option>
                 <option value="6">6月</option>
                 <option value="12">12月</option>
-                <option value="max">永久</option>
+                <option value="0">永久</option>
             </datalist>
             </label>
             <button onClick={this.addUser.bind(this)} className={style.searchBtn}>点击添加</button>

@@ -28,6 +28,9 @@ export default class StopServerTable extends Component {
     setComment(e){
         TableStore.setComment(e.target.value)
     }
+    setDisable(e){
+        TableStore.setDisable(e.target.value)
+    }
     render()
     {
         let info=this.state.addUserTableData;
@@ -75,9 +78,9 @@ export default class StopServerTable extends Component {
                                     <td>{val.email}</td>
                                     <td>{val.infoUserType}</td>
                                     <td>
-                                        <select name="serverStatus" id="serverStatus">
-                                            <option value="disable">失效</option>
-                                            <option value="able">有效</option>
+                                        <select name="serverStatus" id="serverStatus" onChange={this.setDisable.bind(this)}>
+                                            <option value="DISABLED">失效</option>
+                                            <option value="ABLE">有效</option>
                                         </select>
                                     </td>
                                 </tr>
