@@ -55,7 +55,6 @@ export default class AddNewUser extends React.Component{
             success: function(result) {
                 if (result.code==200){
                     this.handleData(result.info);
-                    alert(result.message)
                 }else {
                     alert(result.message)
                 }

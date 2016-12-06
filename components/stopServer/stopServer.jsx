@@ -68,7 +68,7 @@ export default class StopServer extends React.Component{
                 if (result.code==200){
                     this.handleData(result.info);
                 }else {
-                    alert('加载失败')
+                    alert(result.message)
                 }
             }.bind(this),
             error: function() {
