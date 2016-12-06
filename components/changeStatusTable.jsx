@@ -26,7 +26,7 @@ export default class ChangeStatusTable extends Component {
         });
     }
     setNature(e){
-        TableStore.setNature(e.target.vaule)
+        TableStore.setNature(e.target.value)
     }
     render()
     {
@@ -51,6 +51,7 @@ export default class ChangeStatusTable extends Component {
                             <th>电子邮箱</th>
                             <th>用户来源</th>
                             <th>服务状态</th>
+                            <th>选择用户性质</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,13 +60,7 @@ export default class ChangeStatusTable extends Component {
                                 <tr key={i}>
                                     <td>{val.id}</td>
                                     <td>{val.userName}</td>
-                                    <td>
-                                        <select name="serverStatus" id="serverStatus" onChange={this.setNature.bind(this)}>
-                                            <option value="">请选择用户性质</option>
-                                            <option value="disable">监管</option>
-                                            <option value="able">全价</option>
-                                        </select>
-                                    </td>
+                                    <td>{val.userNature}</td>
                                     <td>{val.userType}</td>
                                     <td>{val.startDate}</td>
                                     <td>{val.endDate}</td>
@@ -74,8 +69,15 @@ export default class ChangeStatusTable extends Component {
                                     <td>{val.contactAddress}</td>
                                     <td>{val.mobile}</td>
                                     <td>{val.email}</td>
-                                    <td>{val.infoUserType}</td>
-                                    <td>{val.serverStatus}</td>
+                                    <td>{val.infoUseType}</td>
+                                    <td>{val.serviceStatus}</td>
+                                    <td>
+                                        <select name="serverStatus" id="serverStatus" onChange={this.setNature.bind(this)}>
+                                            <option value="">请选择用户性质</option>
+                                            <option value="3">监管</option>
+                                            <option value="1">全价</option>
+                                        </select>
+                                    </td>
                                 </tr>
                             )
                         }

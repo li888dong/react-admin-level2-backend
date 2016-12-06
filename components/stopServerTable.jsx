@@ -59,6 +59,7 @@ export default class StopServerTable extends Component {
                             <th>电子邮箱</th>
                             <th>用户来源</th>
                             <th>服务状态</th>
+                            <th>更改状态</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -76,11 +77,12 @@ export default class StopServerTable extends Component {
                                     <td>{val.contactAddress}</td>
                                     <td>{val.mobile}</td>
                                     <td>{val.email}</td>
-                                    <td>{val.infoUserType}</td>
+                                    <td>{val.infoUseType}</td>
+                                    <td>{val.serviceStatus}</td>
                                     <td>
                                         <select name="serverStatus" id="serverStatus" onChange={this.setDisable.bind(this)}>
-                                            <option value="DISABLED">失效</option>
-                                            <option value="ABLE">有效</option>
+                                            <option value="">选择状态</option>
+                                            <option value="DISABLED">服务终止</option>
                                         </select>
                                     </td>
                                 </tr>

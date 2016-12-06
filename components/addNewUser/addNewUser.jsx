@@ -76,7 +76,7 @@ export default class AddNewUser extends React.Component{
             <select name="" id="" className={style.mr_10} onChange={this.selectUserNature.bind(this)}>
                 <option value="">选择用户类型</option>
                 <option value="3">监管</option>
-                <option value="4">内部免费</option>
+                <option value="5">内部免费</option>
             </select>
             </label>
             <label className={style.mt_5}>产品期限：

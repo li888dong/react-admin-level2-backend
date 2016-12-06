@@ -65,8 +65,8 @@ export default class AddNewUserTable extends Component {
                                 <td>{val.contactAddress}</td>
                                 <td>{val.mobile}</td>
                                 <td>{val.email}</td>
-                                <td>{val.infoUserType}</td>
-                                <td>{val.serverStatus}</td>
+                                <td>{val.infoUseType}</td>
+                                <td>{val.serviceStatus}</td>
                             </tr>
                         )
                     }

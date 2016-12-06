@@ -37,7 +37,7 @@ export default class StopServer extends React.Component{
             success: function(result) {
                 if (result.code==200){
                     this.setState({
-                        orderId:result.info.orderId
+                        orderId:result.info[0].orderId
                     });
                     this.handleData(result.info)
                 }else {
@@ -66,7 +66,7 @@ export default class StopServer extends React.Component{
             },
             success: function(result) {
                 if (result.code==200){
-                    this.handleData(result.addUserTableData);
+                    this.handleData(result.info);
                 }else {
                     alert('加载失败')
                 }

@@ -42,7 +42,7 @@ export default class ChangeStatus extends React.Component{
             success: function(result) {
                 if (result.code==200){
                     this.setState({
-                        orderId:result.info.orderId
+                        orderId:result.info[0].orderId
                     });
                     this.handleData(result.info)
                 }else {
@@ -56,6 +56,7 @@ export default class ChangeStatus extends React.Component{
     }
     submit(){
         this.emptyTable();
+        console.log(TableStore.getNature());
         $.ajax({
             url: "/user/updateNature",
             dataType: 'json',
@@ -68,7 +69,7 @@ export default class ChangeStatus extends React.Component{
                 if (result.code==200){
                     this.handleData(result.info);
                 }else {
-                    alert('加载失败')
+                    alert(result.message)
                 }
             }.bind(this),
             error: function() {
