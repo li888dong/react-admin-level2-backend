@@ -6,6 +6,7 @@
 }
 .input{
     margin-right: 10px;
+    line-height: normal;
 }
 .row{
     width: 700px;
@@ -14,7 +15,6 @@
     display: flex;
     flex-flow: row;
     justify-content: space-around;
-    composes:mt_50;
 }
 .searchBtn{
     color: white;

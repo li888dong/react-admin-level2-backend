@@ -6,13 +6,13 @@
 }
 .input{
     margin-right: 10px;
+    line-height: normal;
 }
 .row{
     padding: 5px;
     display: flex;
     flex-flow: row;
     justify-content: space-between;
-    composes:mt_50;
 }
 .searchBtn{
     color: white;

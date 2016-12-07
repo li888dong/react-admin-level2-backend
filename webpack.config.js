@@ -24,15 +24,15 @@ module.exports = {
   plugins: [
     new webpack.BannerPlugin('This file is created by lidong'),
 //代码压缩
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        // remove all comments
-        comments: false
-      },
-      compress: {
-        warnings: false
-      }
-    }),
+//    new webpack.optimize.UglifyJsPlugin({
+//      output: {
+//        // remove all comments
+//        comments: false
+//      },
+//      compress: {
+//        warnings: false
+//      }
+//    }),
     new CommonsChunkPlugin('build/init.js'),
       //开发时注释部分保留，上线时注掉
     //new webpack.HotModuleReplacementPlugin(),
