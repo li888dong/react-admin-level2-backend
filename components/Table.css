@@ -40,3 +40,6 @@ td{
     border: 1px solid #ddd;
     display: table-cell;
 }
+h3{
+    cursor: pointer;
+}

@@ -8,7 +8,8 @@ export default class ChangeStatus extends React.Component{
         super(props);
         this.state={
             tel:"",
-            orderId:""
+            orderId:"",
+            serviceStatus:""
         }
     }
 
@@ -42,7 +43,8 @@ export default class ChangeStatus extends React.Component{
             success: function(result) {
                 if (result.code==200){
                     this.setState({
-                        orderId:result.info[0].orderId
+                        orderId:result.info[0].orderId,
+                        serviceStatus:result.info[0].serviceStatus
                     });
                     this.handleData(result.info)
                 }else {
@@ -63,7 +65,8 @@ export default class ChangeStatus extends React.Component{
             type: 'post',
             data: {
                 orderId:this.state.orderId,
-                _userProperty:TableStore.getNature()
+                _userProperty:TableStore.getNature(),
+                serviceStatus:this.state.serviceStatus
             },
             success: function(result) {
                 if (result.code==200){
