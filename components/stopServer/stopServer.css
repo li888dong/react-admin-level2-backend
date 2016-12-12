@@ -9,12 +9,10 @@
     line-height: normal;
 }
 .row{
-    width: 700px;
     padding: 5px;
-    margin-left: 400px;
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .searchBtn{
     color: white;
@@ -30,6 +28,7 @@
     cursor: pointer;
     background-image: none;
     border: 1px solid transparent;
+    margin-right: 10px;
 }
 .confirmBtn{
     color: white;

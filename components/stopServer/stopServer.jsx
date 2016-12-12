@@ -10,16 +10,22 @@ export default class StopServer extends React.Component{
             stopServerTableData: TableStore.getStopServerTableData(),
             tel:"",
             orderId:"",
-            disable:""
+            disable:"",
+            deadLine:""
         }
     }
 
     handleData(result){
         SearchActions.setStopServerTableData(result);
     }
-    changeInput(e){
+    changeTel(e){
         this.setState({
             tel: e.target.value
+        })
+    }
+    changeDeadLine(e){
+        this.setState({
+            deadLine: e.target.value
         })
     }
     search(){
@@ -53,10 +59,18 @@ export default class StopServer extends React.Component{
         let comment=TableStore.getComment();
         if (!comment){
             alert("请输入备注信息");
-            return
+            return false
+        }
+        if (!TableStore.getDisable()){
+            alert("请选择要更改的用户服务状态");
+            return false
         }
         if (!confirm("确认停止手机号："+this.state.tel+"的用户服务？")){
             return false;
+        }
+        if (!TableStore.getDisable()){
+            alert("请选择要更改的服务状态");
+            return false
         }
         $.ajax({
             url: "/order/updateStatus",
@@ -65,7 +79,8 @@ export default class StopServer extends React.Component{
             data: {
                 orderId:this.state.orderId,
                 context:comment,
-                disabled:TableStore.getDisable()
+                disabled:TableStore.getDisable(),
+                deadLine:this.state.deadLine
             },
             success: function(result) {
                 if (result.code==200){
@@ -82,9 +97,11 @@ export default class StopServer extends React.Component{
     render() {
         return <div className={style.row}>
             <label className={style.mt_5}>手机号码：
-            <input type="tel" onChange={this.changeInput.bind(this)}  className={style.input}/></label>
+            <input type="tel" onChange={this.changeTel.bind(this)}  className={style.input}/></label>
             <label className={style.mt_5}>客户号：
             <input type="tel" className={style.input} disabled/></label>
+            <label className={style.mt_5}>终止日期：
+            <input type="date" onChange={this.changeDeadLine.bind(this)}  className={style.input}/></label>
             <button onClick={this.search.bind(this)} className={style.searchBtn}>点击查询</button>
             <button onClick={this.submit.bind(this)} className={style.confirmBtn}>确认终止</button>
         </div>
