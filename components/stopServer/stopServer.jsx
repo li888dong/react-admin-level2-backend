@@ -23,9 +23,9 @@ export default class StopServer extends React.Component{
         })
     }
     search(){
-        if (this.state.tel==""){
-            alert('请输入号码');
-            return
+        if(!(/^1(3|4|5|7|8)\d{9}$/.test(this.state.tel))){
+            alert("手机号码有误，请重填");
+            return false;
         }
         $.ajax({
             url: "/user/find",
@@ -55,6 +55,9 @@ export default class StopServer extends React.Component{
             alert("请输入备注信息");
             return
         }
+        if (!confirm("确认停止手机号："+this.state.tel+"的用户服务？")){
+            return false;
+        }
         $.ajax({
             url: "/order/updateStatus",
             dataType: 'json',
@@ -81,7 +84,7 @@ export default class StopServer extends React.Component{
             <label className={style.mt_5}>手机号码：
             <input type="tel" onChange={this.changeInput.bind(this)}  className={style.input}/></label>
             <label className={style.mt_5}>客户号：
-            <input type="tel" onChange={this.changeInput.bind(this)}  className={style.input}/></label>
+            <input type="tel" className={style.input} disabled/></label>
             <button onClick={this.search.bind(this)} className={style.searchBtn}>点击查询</button>
             <button onClick={this.submit.bind(this)} className={style.confirmBtn}>确认终止</button>
         </div>

@@ -37,9 +37,16 @@ export default class AddNewUser extends React.Component{
         })
     }
     addUser(){
-        if (this.state.tel==""){
-            alert('请输入号码');
-            return
+        if(!(/^1(3|4|5|7|8)\d{9}$/.test(this.state.tel))){
+            alert("手机号码有误，请重填");
+            return false;
+        }
+        if (this.state.tel==""||this.state.userNature==""||this.state.productTimeLimit==""){
+            alert("请填写完整信息");
+            return false
+        }
+        if (!confirm("确认添加手机号码："+this.state.tel+"用户类型："+this.state.userNature+"产品期限："+this.state.productTimeLimit+"月")){
+            return false
         }
 
         $.ajax({
@@ -69,7 +76,7 @@ export default class AddNewUser extends React.Component{
             <label className={style.mt_5} htmlFor="mobile">手机号码：
             <input type="tel" id="mobile" onChange={this.inputMobile.bind(this)} className={style.mr_10}/></label>
             <label className={style.mt_5}>客户号：
-            <input type="number" className={style.mr_10} onChange={this.inputClient.bind(this)}/>
+            <input type="number" className={style.mr_10} disabled/>
             </label>
             <label className={style.mt_5}>用户类型：
             <select name="" id="" className={style.mr_10} onChange={this.selectUserNature.bind(this)}>

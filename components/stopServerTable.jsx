@@ -39,8 +39,8 @@ export default class StopServerTable extends Component {
                 <div className={TableStyle.col}>
                     <StopServer/>
                     <textarea
-                        cols="30" rows="10"
-                        placeholder="请输入备注"
+                        cols="30" rows="4"
+                        placeholder="请输入停止服务原因(必填)"
                         onChange={this.setComment.bind(this)}
                     />
                     <table className={TableStyle.table}>

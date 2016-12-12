@@ -29,10 +29,11 @@ export default class ChangeStatus extends React.Component{
         })
     }
     search(){
-        if (this.state.tel==""){
-            alert('请输入号码');
-            return
+        if(!(/^1(3|4|5|7|8)\d{9}$/.test(this.state.tel))){
+            alert("手机号码有误，请重填");
+            return false;
         }
+
         $.ajax({
             url: "/user/find",
             dataType: 'json',
@@ -58,7 +59,9 @@ export default class ChangeStatus extends React.Component{
     }
     submit(){
         this.emptyTable();
-        console.log(TableStore.getNature());
+        if (!confirm("请确认更改手机号："+this.state.tel+"的用户性质为："+TableStore.getNature())){
+            return false;
+        }
         $.ajax({
             url: "/user/updateNature",
             dataType: 'json',
@@ -76,16 +79,16 @@ export default class ChangeStatus extends React.Component{
                 }
             }.bind(this),
             error: function() {
-                alert('加载失败1')
+                alert('加载失败')
             }.bind(this)
         });
     }
     render() {
         return <div className={style.row}>
             <label className={style.mt_5}>手机号码：
-            <input type="tel" onChange={this.changeInput.bind(this)} value={this.state.tel} className={style.input}/></label>
+            <input type="tel" onChange={this.changeInput.bind(this)} className={style.input}/></label>
             <label className={style.mt_5}>客户号：
-            <input type="tel" onChange={this.changeInput.bind(this)} value={this.state.tel} className={style.input} disabled/></label>
+            <input type="tel" onChange={this.changeInput.bind(this)} disabled/></label>
             <button onClick={this.search.bind(this)} className={style.searchBtn}>点击查询</button>
             <button onClick={this.submit.bind(this)} className={style.confirmBtn}>确认更改</button>
 
