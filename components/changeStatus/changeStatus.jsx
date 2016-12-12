@@ -58,7 +58,6 @@ export default class ChangeStatus extends React.Component{
         });
     }
     submit(){
-        this.emptyTable();
         if (!confirm("请确认更改手机号："+this.state.tel+"的用户性质为："+TableStore.getNature())){
             return false;
         }
