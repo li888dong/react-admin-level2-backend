@@ -61,7 +61,7 @@ export default class StopServer extends React.Component{
             alert("请输入备注信息");
             return false
         }
-        if (!TableStore.getDisable()){
+        if (TableStore.getDisable()!="DISABLED"){
             alert("请选择要更改的用户服务状态");
             return false
         }
