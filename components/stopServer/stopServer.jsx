@@ -8,28 +8,17 @@ export default class StopServer extends React.Component{
         super(props);
         this.state={
             stopServerTableData: TableStore.getStopServerTableData(),
-            tel:"",
             orderId:"",
             disable:"",
-            deadLine:""
         }
     }
 
     handleData(result){
         SearchActions.setStopServerTableData(result);
     }
-    changeTel(e){
-        this.setState({
-            tel: e.target.value
-        })
-    }
-    changeDeadLine(e){
-        this.setState({
-            deadLine: e.target.value
-        })
-    }
+    
     search(){
-        if(!(/^1(3|4|5|7|8)\d{9}$/.test(this.state.tel))){
+        if(!(/^1(3|4|5|7|8)\d{9}$/.test(this.refs.tel.value))){
             alert("手机号码有误，请重填");
             return false;
         }
@@ -38,7 +27,7 @@ export default class StopServer extends React.Component{
             dataType: 'json',
             type: 'post',
             data: {
-                mobile:this.state.tel
+                mobile:this.refs.tel.value
             },
             success: function(result) {
                 if (result.code==200){
@@ -65,7 +54,7 @@ export default class StopServer extends React.Component{
             alert("请选择要更改的用户服务状态");
             return false
         }
-        if (!confirm("确认停止手机号："+this.state.tel+"的用户服务？")){
+        if (!confirm("确认停止手机号："+this.refs.tel.value+"的用户服务？")){
             return false;
         }
         if (!TableStore.getDisable()){
@@ -80,7 +69,7 @@ export default class StopServer extends React.Component{
                 orderId:this.state.orderId,
                 context:comment,
                 disabled:TableStore.getDisable(),
-                deadLine:this.state.deadLine
+                deadLine:this.refs.deadLine.value
             },
             success: function(result) {
                 if (result.code==200){
@@ -97,11 +86,11 @@ export default class StopServer extends React.Component{
     render() {
         return <div className={style.row}>
             <label className={style.mt_5}>手机号码：
-            <input type="tel" onChange={this.changeTel.bind(this)}  className={style.input}/></label>
+            <input type="tel" ref="tel"  className={style.input}/></label>
             <label className={style.mt_5}>客户号：
             <input type="tel" className={style.input} disabled/></label>
             <label className={style.mt_5}>终止日期：
-            <input type="date" onChange={this.changeDeadLine.bind(this)}  className={style.input}/></label>
+            <input type="date" refs="deadLine"  className={style.input}/></label>
             <button onClick={this.search.bind(this)} className={style.searchBtn}>点击查询</button>
             <button onClick={this.submit.bind(this)} className={style.confirmBtn}>确认终止</button>
         </div>
